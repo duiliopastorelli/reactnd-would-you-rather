@@ -1,0 +1,35 @@
+//Colours
+$primary: #1B5E20;
+$primary800: #2E7D32;
+$primary700: #388E3C;
+$primary600: #43A047;
+$primary500: #4CAF50;
+$primary400: #66BB6A;
+$primary300: #81C784;
+$primary200: #A5D6A7;
+$primary100: #C8E6C9;
+$primary50: #E8F5E9;
+
+$secondary: #FFD54F;
+$secondary900: #FF6F00;
+$secondary800: #FF8F00;
+$secondary700: #FFA000;
+$secondary600: #FFB300;
+$secondary500: #FFC107;
+$secondary400: #FFCA28;
+$secondary300: $secondary;
+$secondary200: #FFE082;
+$secondary100: #FFECB3;
+$secondary50: #FFF8E1;
+
+$primaryTextHighEmphasis: #fff;
+$primaryTextMediumEmphasis: lighten(#fff, 33);
+$primaryTextDisabled: lighten(#fff, 62);
+
+$blackTextHighEmphasis: lighten(#000, 13);
+$blackTextHighEmphasis: lighten(#000, 40);
+$blackTextHighEmphasis: lighten(#000, 62);
+
+$whiteTextHighEmphasis: #fff;
+$whiteTextHighEmphasis: lighten(#fff, 40);
+$whiteTextHighEmphasis: lighten(#fff, 62);

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router";
 import {Route} from 'react-router-dom';
@@ -36,7 +36,7 @@ class App extends Component {
       : userBarInfo.avatarURL = "";
 
     return (
-      <div>
+      <Fragment>
         <header>
           {
             <UserBarInfo
@@ -47,11 +47,14 @@ class App extends Component {
           }
         </header>
 
-        {!this.props.authedUser && <Welcome/>}
+        <div className={"appWrapper"}>
+          <h1>Would you Rather</h1>
 
-        <Route exact path={"/login"} component={UserList}/>
+          {!this.props.authedUser && <Welcome/>}
 
-      </div>
+          <Route exact path={"/login"} component={UserList}/>
+        </div>
+      </Fragment>
     );
   }
 }

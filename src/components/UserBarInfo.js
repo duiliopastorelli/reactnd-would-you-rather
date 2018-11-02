@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {setAuthedUser} from "../actions/authedUser";
 
@@ -14,7 +14,7 @@ class UserBarInfo extends Component {
     const {userName, avatarUrl, authedUser} = this.props;
 
     return (
-      <div>
+      <Fragment>
         <span>{userName}</span>
         {avatarUrl !== "" &&
         <img src={avatarUrl} alt={userName + "'s Avatar"}/>}
@@ -22,7 +22,7 @@ class UserBarInfo extends Component {
         {/*Shows the logout link only if a user already logged in*/}
         {authedUser && <a href="#" onClick={this.handleLogout}>Logout</a>}
 
-      </div>
+      </Fragment>
     )
   }
 }

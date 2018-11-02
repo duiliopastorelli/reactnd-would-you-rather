@@ -5,8 +5,9 @@ import UserListElement from "./UserListElement";
 class UserList extends Component {
   render() {
     return (
-      <div>
-        Please select an user
+      <div className={"userList"}>
+        <h2>Please select an user</h2>
+
         <ul>
           {this.props.userIds.map(user =>
             <UserListElement
