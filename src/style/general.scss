@@ -4,6 +4,8 @@ ul li {
 
 body {
   background-color: $primary50;
+  font-family: Roboto, sans-serif;
+  color: $blackTextHighEmphasis;
 }
 
 header {
@@ -60,5 +62,35 @@ p {
         margin-right: 15px;
       }
     }
+  }
+}
+
+.poolBtn {
+  display: flex;
+  justify-content: flex-end;
+
+  & span {
+    padding: 7px;
+    background-color: $secondary900;
+    color: $primaryTextHighEmphasis;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.poolList-element {
+  margin: 0 0 15px;
+
+  &__wrapper {
+    padding: 10px;
+    border: 2px solid $blackTextMediumEmphasis;
+  }
+
+  &__author {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
   }
 }

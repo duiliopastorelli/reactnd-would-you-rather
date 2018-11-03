@@ -7,6 +7,7 @@ import {checkIfUserIsLogged} from "./utils/helpers";
 import UserList from './components/UserList';
 import Welcome from './components/Welcome';
 import UserBarInfo from "./components/UserBarInfo";
+import PoolList from "./components/PoolList";
 
 class App extends Component {
 
@@ -51,6 +52,8 @@ class App extends Component {
           <h1>Would you Rather</h1>
 
           {!this.props.authedUser && <Welcome/>}
+
+          {this.props.authedUser && <PoolList/>}
 
           <Route exact path={"/login"} component={UserList}/>
         </div>

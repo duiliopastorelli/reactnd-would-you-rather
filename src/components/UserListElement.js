@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
-import {setAuthedUser} from "../actions/authedUser";
+import {setAuthedUser} from '../actions/authedUser';
 import PropTypes from 'prop-types'
 
 class UserListElement extends Component {

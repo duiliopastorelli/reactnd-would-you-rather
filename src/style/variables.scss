@@ -27,9 +27,9 @@ $primaryTextMediumEmphasis: lighten(#fff, 33);
 $primaryTextDisabled: lighten(#fff, 62);
 
 $blackTextHighEmphasis: lighten(#000, 13);
-$blackTextHighEmphasis: lighten(#000, 40);
-$blackTextHighEmphasis: lighten(#000, 62);
+$blackTextMediumEmphasis: lighten(#000, 40);
+$blackTextDisabled: lighten(#000, 62);
 
 $whiteTextHighEmphasis: #fff;
-$whiteTextHighEmphasis: lighten(#fff, 40);
-$whiteTextHighEmphasis: lighten(#fff, 62);
+$whiteTextMediumEmphasis: lighten(#fff, 40);
+$whiteTextDisabled: lighten(#fff, 62);

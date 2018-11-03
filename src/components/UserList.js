@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import UserListElement from "./UserListElement";
+import UserListElement from './UserListElement';
+import PropTypes from 'prop-types';
 
 class UserList extends Component {
   render() {
@@ -19,6 +20,10 @@ class UserList extends Component {
     )
   }
 }
+
+UserList.propTypes = {
+  userIds: PropTypes.array.isRequired,
+};
 
 function mapStateToProps({users}){
   return {

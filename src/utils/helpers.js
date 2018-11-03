@@ -11,3 +11,32 @@ export function checkIfUserIsLogged(authedUser, history) {
     typeof authedUser === 'undefined'
   ) history.push('/login');
 }
+
+/**
+ * Filters the questions for determine which have been answered or not
+ *
+ * @param questions
+ * @param authedUser
+ * @returns {{unanswered, answered}}
+ */
+export function filterQuestionsByUser(questions, authedUser){
+  const unanswered=[];
+  const answered=[];
+
+  for(const key of Object.keys(questions)){
+
+    //Check if the authed user voted for any of the available options
+    if(
+      questions[key].optionOne.votes.includes(authedUser) ||
+      questions[key].optionTwo.votes.includes(authedUser)
+    ){
+      answered.push(questions[key]);
+    } else {
+      unanswered.push(questions[key]);
+    }
+  }
+
+  answered.sort((a, b) => a.timestamp - b.timestamp);
+
+  return {unanswered, answered}
+}

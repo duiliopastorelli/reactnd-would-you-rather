@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {setAuthedUser} from "../actions/authedUser";
+import {setAuthedUser} from '../actions/authedUser';
+import PropTypes from 'prop-types';
 
 class UserBarInfo extends Component {
 
@@ -26,5 +27,11 @@ class UserBarInfo extends Component {
     )
   }
 }
+
+UserBarInfo.propTypes = {
+  userName: PropTypes.string.isRequired,
+  avatarURL: PropTypes.string,
+  authedUser: PropTypes.string,
+};
 
 export default connect()(UserBarInfo);
