@@ -93,3 +93,15 @@ export function getStats(questions) {
 
   return result;
 }
+
+/**
+ * Persists the value of the user in the local storage, or removes the key
+ * if no value is passed
+ *
+ * @param user
+ */
+export function persistLogin(user) {
+  user
+    ? localStorage.loggedUser = user
+    : localStorage.removeItem("loggedUser");
+}

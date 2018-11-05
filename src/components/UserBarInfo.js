@@ -1,15 +1,21 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 import {setAuthedUser} from '../actions/authedUser';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
+import {persistLogin} from "../utils/helpers";
 
 class UserBarInfo extends Component {
 
 
-  handleLogout = (e) => {
-    e.preventDefault();
+  handleLogout = () => {
     this.props.dispatch(setAuthedUser(null));
+
+    //Remove the user token value
+    persistLogin();
+
+    this.props.history.push("/");
   };
 
   render() {
@@ -27,7 +33,7 @@ class UserBarInfo extends Component {
 
         {/*Shows the logout link only if a user already logged in, otherwise
          show the login link*/}
-        {authedUser
+        {authedUser !== null
           ? <span className={"logoutLink"} onClick={this.handleLogout}>Logout</span>
           : <Link to={'/login'}>Login</Link>
         }
@@ -43,4 +49,4 @@ UserBarInfo.propTypes = {
   authedUser: PropTypes.string,
 };
 
-export default connect()(UserBarInfo);
+export default withRouter(connect()(UserBarInfo));

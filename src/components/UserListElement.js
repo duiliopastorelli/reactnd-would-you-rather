@@ -3,15 +3,16 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
 import {setAuthedUser} from '../actions/authedUser';
 import PropTypes from 'prop-types'
+import {persistLogin} from "../utils/helpers";
 
 class UserListElement extends Component {
-  handleUserSelection = (e) => {
-    e.preventDefault();
+  handleUserSelection = () => {
 
     //Update the state with the selected authedUser
     this.props.dispatch(setAuthedUser(this.props.userId));
 
-    //todo persist the authedUser in the local storage
+    //Persist the logged user id in the local storage
+    persistLogin(this.props.userId);
 
     //Redirect the user to the previous page visited
     this.props.history.goBack();

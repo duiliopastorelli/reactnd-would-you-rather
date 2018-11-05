@@ -21,10 +21,11 @@ class PoolListElement extends Component {
         checkIfAlreadyVoted(
           this.props.questions.optionTwo, this.props.authedUser
         )
-    }))
+    }));
   }
 
-  handlevoting = (answer) => {
+  handleVoting = (answer) => {
+    console.log(answer);
     //Checks if the voting button is enabled
     if (!this.state.isVotingDisabled) {
       let authedUser = this.props.authedUser;
@@ -78,9 +79,10 @@ class PoolListElement extends Component {
 
             {this.isUserInQuestionsPath() &&
             this.state.isVoted &&
+            this.props.stats[this.props.id] &&
             <span>
               <span className={"votersNumber"}>
-              # of voters: {this.props.stats[this.props.id].optionOne.votersNumber}
+                # of voters: {this.props.stats[this.props.id].optionOne.votersNumber}
               </span>
               <span>
               {this.props.stats[this.props.id].optionOne.votersPercent} %
@@ -94,7 +96,7 @@ class PoolListElement extends Component {
               "poolBtn" +
               (this.state.isVotingDisabled ? " poolBtn--disabled" : "")
             }>
-              <span onClick={() => this.handlevoting("optionOne")}>Vote</span>
+              <span onClick={() => this.handleVoting("optionOne")}>Vote</span>
             </div>
             }
           </div>
@@ -109,6 +111,7 @@ class PoolListElement extends Component {
 
             {this.isUserInQuestionsPath() &&
             this.state.isVoted &&
+            this.props.stats[this.props.id] &&
             <span>
               <span className={"votersNumber"}>
               # of voters: {this.props.stats[this.props.id].optionTwo.votersNumber}
@@ -125,7 +128,7 @@ class PoolListElement extends Component {
               "poolBtn" +
               (this.state.isVotingDisabled ? " poolBtn--disabled" : "")
             }>
-              <span onClick={() => this.handlevoting("optionTwo")}>Vote</span>
+              <span onClick={() => this.handleVoting("optionTwo")}>Vote</span>
             </div>
             }
           </div>

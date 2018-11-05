@@ -8,12 +8,17 @@ import Welcome from './components/Welcome';
 import UserBarInfo from "./components/UserBarInfo";
 import PoolList from "./components/PoolList";
 import QuestionDetails from "./components/QuestionDetails";
+import {setAuthedUser} from "./actions/authedUser";
 
 class App extends Component {
 
   componentDidMount() {
     //Retrieve the Users from the DB
     this.props.dispatch(getInitialUsers());
+
+    //Set the Store's authUser accordingly with the localStorage
+    localStorage.loggedUser &&
+    this.props.dispatch(setAuthedUser(localStorage.loggedUser));
 
     //Retrieve the questions from the DB
     this.props.dispatch(getInitialQuestions());
@@ -50,7 +55,6 @@ class App extends Component {
 
         <div className={"appWrapper"}>
 
-          <Route path="/home" render={() => <div>Home</div>}/>
           <Route exact path={"/"} render={() => (
             <Fragment>
               <h1>Would you Rather</h1>

@@ -7,11 +7,13 @@ class QuestionDetails extends Component {
 
   componentDidMount(){
     //Redirects the user to the login if is not logged in
-    !this.props.authedUser && this.props.history.push("/login");
+    !this.props.authedUser &&
+    !localStorage.loggedUser &&
+    this.props.history.push("/login");
   };
 
   handleBack = () => {
-    this.props.history.goBack();
+    this.props.history.push("/");
   };
 
   render() {
