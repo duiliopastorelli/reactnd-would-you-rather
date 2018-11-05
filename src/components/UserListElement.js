@@ -13,8 +13,8 @@ class UserListElement extends Component {
 
     //todo persist the authedUser in the local storage
 
-    //Redirect the user to the "/"
-    this.props.history.push('/');
+    //Redirect the user to the previous page visited
+    this.props.history.goBack();
   };
 
   render() {
@@ -22,14 +22,14 @@ class UserListElement extends Component {
     const data = currentUserData[userId];
 
     return (
-      <a href={'#'} onClick={this.handleUserSelection}>
-        <li>
+      <li onClick={this.handleUserSelection}>
+        <span>
           <img
             src={data.avatarURL}
-            alt={data.name + "'s avatar"} />
+            alt={data.name + "'s avatar"}/>
           <span>{data.name}</span>
-        </li>
-      </a>
+        </span>
+      </li>
     )
   }
 }

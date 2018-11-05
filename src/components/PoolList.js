@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import PoolListElement from "./PoolListElement";
 import {filterQuestionsByUser} from "../utils/helpers";
 
@@ -16,7 +17,7 @@ class PoolList extends Component {
   };
 
   render() {
-    const {answeredQuestions, unansweredQuestions, users} = this.props;
+    const {answeredQuestions, unansweredQuestions} = this.props;
     const currentQuestions = this.state.displayAnswered
       ? answeredQuestions
       : unansweredQuestions;
@@ -32,15 +33,23 @@ class PoolList extends Component {
         </div>
 
         <h2>{
-        this.state.displayAnswered ? "Answered " : "Unanswered "
+          this.state.displayAnswered ? "Answered " : "Unanswered "
         } questions</h2>
 
         {currentQuestions.map((question) => {
-          return <PoolListElement
-            key={question.id}
-            questions={question}
-            author={this.props.users[question.author].name}
-          />
+          return (
+            <Link
+              key={question.id}
+              to={"/questions/" + question.id}
+              className={"poolList-link"}
+            >
+              <PoolListElement
+                id={question.id}
+                questions={question}
+                authorData={this.props.users[question.author]}
+              />
+            </Link>
+          )
         })}
       </div>
     )

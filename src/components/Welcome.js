@@ -5,7 +5,8 @@ function Welcome() {
   return (
     <Fragment>
       <p>Welcome! For access the App's functionalities please log in:&nbsp;
-        <Link to={'/login'}>Login</Link></p>
+        <Link to={'/login'}>Login</Link>
+      </p>
     </Fragment>
   )
 }

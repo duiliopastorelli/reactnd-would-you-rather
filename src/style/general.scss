@@ -1,3 +1,7 @@
+hr {
+  margin: 0 10px;
+}
+
 ul li {
   list-style: none;
 }
@@ -18,8 +22,7 @@ header {
   color: $primaryTextHighEmphasis;
 
   & img {
-    margin: 0 10px;
-    border-radius: 50px;
+    margin: 0 10px 0 0;
   }
 
   & a:visited, & a:active {
@@ -39,6 +42,22 @@ p {
 
 .appWrapper {
   padding: 0 15px 15px;
+}
+
+.avatar {
+  border-radius: 50px;
+}
+
+.barInfo--userName {
+  margin-right: 10px;
+}
+
+.logoutLink {
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .userList {
@@ -78,19 +97,89 @@ p {
       cursor: pointer;
     }
   }
+
+  &--disabled {
+
+    & span {
+      background-color: $secondary100;
+      color: $blackTextDisabled;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.backBtn {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+
+  & span {
+    padding: 7px;
+    background-color: $secondary900;
+    color: $primaryTextHighEmphasis;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.userListElements {
+
+  & li {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  & span {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    background-color: $secondary400;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.poolList-link {
+  &,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: $blackTextHighEmphasis;
+  }
 }
 
 .poolList-element {
-  margin: 0 0 15px;
+  margin: 0 0 25px;
 
   &__wrapper {
-    padding: 10px;
     border: 2px solid $blackTextMediumEmphasis;
+  }
+
+  &__question {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    &--selected {
+      background-color: $primary300;
+    }
   }
 
   &__author {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     padding: 5px;
+  }
+
+  & .votersNumber {
+    margin-right: 15px;
   }
 }

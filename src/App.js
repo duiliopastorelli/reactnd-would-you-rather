@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {withRouter} from "react-router";
 import {Route} from 'react-router-dom';
 import {getInitialUsers, getInitialQuestions} from './actions/shared';
-import {checkIfUserIsLogged} from "./utils/helpers";
 import UserList from './components/UserList';
 import Welcome from './components/Welcome';
 import UserBarInfo from "./components/UserBarInfo";
 import PoolList from "./components/PoolList";
+import QuestionDetails from "./components/QuestionDetails";
 
 class App extends Component {
 
@@ -49,13 +49,23 @@ class App extends Component {
         </header>
 
         <div className={"appWrapper"}>
-          <h1>Would you Rather</h1>
 
-          {!this.props.authedUser && <Welcome/>}
-
-          {this.props.authedUser && <PoolList/>}
+          <Route path="/home" render={() => <div>Home</div>}/>
+          <Route exact path={"/"} render={() => (
+            <Fragment>
+              <h1>Would you Rather</h1>
+              {!this.props.authedUser && <Welcome/>}
+              {this.props.authedUser && <PoolList/>}
+            </Fragment>
+          )
+          }/>
 
           <Route exact path={"/login"} component={UserList}/>
+
+          <Route
+            path={"/questions/:questionId"}
+            component={QuestionDetails}
+          />
         </div>
       </Fragment>
     );

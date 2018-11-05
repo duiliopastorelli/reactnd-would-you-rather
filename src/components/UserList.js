@@ -9,7 +9,7 @@ class UserList extends Component {
       <div className={"userList"}>
         <h2>Please select an user</h2>
 
-        <ul>
+        <ul className={"userListElements"}>
           {this.props.userIds.map(user =>
             <UserListElement
               key={user}

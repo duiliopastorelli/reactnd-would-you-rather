@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {setAuthedUser} from '../actions/authedUser';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 class UserBarInfo extends Component {
 
@@ -16,12 +17,20 @@ class UserBarInfo extends Component {
 
     return (
       <Fragment>
-        <span>{userName}</span>
+        <span className={"barInfo--userName"}>{userName}</span>
         {avatarUrl !== "" &&
-        <img src={avatarUrl} alt={userName + "'s Avatar"}/>}
+        <img
+          className={"avatar"}
+          src={avatarUrl}
+          alt={userName + "'s Avatar"}
+        />}
 
-        {/*Shows the logout link only if a user already logged in*/}
-        {authedUser && <a href="#" onClick={this.handleLogout}>Logout</a>}
+        {/*Shows the logout link only if a user already logged in, otherwise
+         show the login link*/}
+        {authedUser
+          ? <span className={"logoutLink"} onClick={this.handleLogout}>Logout</span>
+          : <Link to={'/login'}>Login</Link>
+        }
 
       </Fragment>
     )
