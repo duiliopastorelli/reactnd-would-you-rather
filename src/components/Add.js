@@ -9,6 +9,7 @@ class Add extends Component {
 
   state = {
     isSubmitBtnDisabled: false,
+    errorMessage: false
   };
 
   componentDidMount() {
@@ -19,15 +20,17 @@ class Add extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!this.state.isSubmitBtnDisabled) {
+    //Store the form info and serialise them
+    let form = document.querySelector("#addForm");
+    let serialisedForm = serialize(form, {hash: true});
+
+    if (!this.state.isSubmitBtnDisabled &&
+      Object.keys(serialisedForm).length === 2
+    ) {
       //Convert the btn state to disabled
       this.setState({
         isSubmitBtnDisabled: true,
       });
-
-      //Store the form info and serialise them
-      let form = document.querySelector("#addForm");
-      let serialisedForm = serialize(form, {hash: true});
 
       //Create the result object for the DB API
       let result = {};
@@ -43,6 +46,15 @@ class Add extends Component {
           //Redirects to the root
           this.props.history.push("/");
         });
+    } else {
+      this.setState({
+        errorMessage: true,
+      });
+      setTimeout(() => {
+        this.setState({
+          errorMessage: false,
+        })
+      }, 4000)
     }
   };
 
@@ -71,6 +83,10 @@ class Add extends Component {
             <span onClick={this.handleSubmit}>Submit</span>
           </div>
         </form>
+
+        <p
+          className={(this.state.errorMessage ? "" : "hidden ") + "errorMessage"}>
+          Error! Input fields must be both populated with a sentence!</p>
       </div>
     )
   }
