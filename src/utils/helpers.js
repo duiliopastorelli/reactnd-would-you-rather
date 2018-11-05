@@ -27,6 +27,13 @@ export function filterQuestionsByUser(questions, authedUser) {
   return {unanswered, answered}
 }
 
+/**
+ * Checks if the question has already been voted by the current logged in user
+ *
+ * @param question
+ * @param authedUser
+ * @returns {boolean}
+ */
 export function checkIfAlreadyVoted(question, authedUser) {
   return question.votes.includes(authedUser);
 }
@@ -67,9 +74,9 @@ export function getStats(questions) {
   //Iterate through the question for populate the partial result
   for (const key of Object.keys(questions)) {
     const partialResult = {
-      questionId:"",
-      optionOne:{},
-      optionTwo:{},
+      questionId: "",
+      optionOne: {},
+      optionTwo: {},
     };
 
     let percentage =
@@ -104,4 +111,11 @@ export function persistLogin(user) {
   user
     ? localStorage.loggedUser = user
     : localStorage.removeItem("loggedUser");
+}
+
+export function handleNotLoggedUserRedirection(props) {
+  //Redirects the user to the login if is not logged in
+  !props.authedUser &&
+  !localStorage.loggedUser &&
+  props.history.push("/login");
 }

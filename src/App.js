@@ -10,6 +10,7 @@ import PoolList from "./components/PoolList";
 import QuestionDetails from "./components/QuestionDetails";
 import {setAuthedUser} from "./actions/authedUser";
 import NotFound from "./components/NotFound";
+import Add from "./components/Add";
 
 class App extends Component {
 
@@ -70,6 +71,7 @@ class App extends Component {
 
             <Route exact path={"/404"} component={NotFound}/>
 
+            <Route exact path={"/add"} component={Add}/>
             <Route
               path={"/questions/:questionId"}
               component={QuestionDetails}

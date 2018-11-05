@@ -2,14 +2,13 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import PoolListElement from "./PoolListElement";
+import {handleNotLoggedUserRedirection} from "../utils/helpers";
 
 class QuestionDetails extends Component {
 
   componentDidMount(){
     //Redirects the user to the login if is not logged in
-    !this.props.authedUser &&
-    !localStorage.loggedUser &&
-    this.props.history.push("/login");
+    handleNotLoggedUserRedirection(this.props);
   };
 
   handleBack = () => {

@@ -8,8 +8,8 @@ import {persistLogin} from "../utils/helpers";
 
 class UserBarInfo extends Component {
 
-
   handleLogout = () => {
+
     this.props.dispatch(setAuthedUser(null));
 
     //Remove the user token value
@@ -34,7 +34,11 @@ class UserBarInfo extends Component {
         {/*Shows the logout link only if a user already logged in, otherwise
          show the login link*/}
         {authedUser !== null
-          ? <span className={"logoutLink"} onClick={this.handleLogout}>Logout</span>
+          ? <Fragment>
+            <span className={"logoutLink"}
+                  onClick={this.handleLogout}>Logout</span>
+            <Link to={"/add"}>Add Question</Link>
+          </Fragment>
           : <Link to={'/login'}>Login</Link>
         }
 

@@ -93,7 +93,7 @@ class PoolListElement extends Component {
             this.props.votingSection &&
             <div className={
               "btn poolBtn" +
-              (this.state.isVotingDisabled ? " poolBtn--disabled" : "")
+              (this.state.isVotingDisabled ? " btn--disabled" : "")
             }>
               <span onClick={() => this.handleVoting("optionOne")}>Vote</span>
             </div>
@@ -125,7 +125,7 @@ class PoolListElement extends Component {
             this.props.votingSection &&
             <div className={
               "btn poolBtn" +
-              (this.state.isVotingDisabled ? " poolBtn--disabled" : "")
+              (this.state.isVotingDisabled ? " btn--disabled" : "")
             }>
               <span onClick={() => this.handleVoting("optionTwo")}>Vote</span>
             </div>
