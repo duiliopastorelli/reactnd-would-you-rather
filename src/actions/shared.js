@@ -16,13 +16,21 @@ export function getInitialUsers() {
   }
 }
 
-export function getInitialQuestions() {
+export function getInitialQuestions(history) {
   return (dispatch) => {
     //Retrieve the questions from the DB
     return _getQuestions()
       .then((questions) => {
         dispatch(receiveQuestions(questions));
         dispatch(receiveStats(getStats(questions)));
+
+        //Checks if the question displayed in the /questions/ route is
+        // available in the DB, if not redirects the user to a 404 page
+        if(history.location.pathname.indexOf("/questions/") !== -1){
+          if(!questions.hasOwnProperty(history.location.pathname.slice(11))){
+            history.push("/404");
+          }
+        }
       })
   }
 }

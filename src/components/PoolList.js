@@ -24,7 +24,7 @@ class PoolList extends Component {
 
     return (
       <div>
-        <div className={"poolBtn"}>
+        <div className={"btn poolBtn"}>
           <span
             onClick={this.handleToggle}
           >Display

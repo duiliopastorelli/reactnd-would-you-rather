@@ -25,7 +25,6 @@ class PoolListElement extends Component {
   }
 
   handleVoting = (answer) => {
-    console.log(answer);
     //Checks if the voting button is enabled
     if (!this.state.isVotingDisabled) {
       let authedUser = this.props.authedUser;
@@ -93,7 +92,7 @@ class PoolListElement extends Component {
             {!this.state.isVoted &&
             this.props.votingSection &&
             <div className={
-              "poolBtn" +
+              "btn poolBtn" +
               (this.state.isVotingDisabled ? " poolBtn--disabled" : "")
             }>
               <span onClick={() => this.handleVoting("optionOne")}>Vote</span>
@@ -125,7 +124,7 @@ class PoolListElement extends Component {
             {!this.state.isVoted &&
             this.props.votingSection &&
             <div className={
-              "poolBtn" +
+              "btn poolBtn" +
               (this.state.isVotingDisabled ? " poolBtn--disabled" : "")
             }>
               <span onClick={() => this.handleVoting("optionTwo")}>Vote</span>

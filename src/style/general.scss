@@ -84,9 +84,8 @@ p {
   }
 }
 
-.poolBtn {
+.btn {
   display: flex;
-  justify-content: flex-end;
 
   & span {
     padding: 7px;
@@ -97,6 +96,9 @@ p {
       cursor: pointer;
     }
   }
+}
+.poolBtn {
+  justify-content: flex-end;
 
   &--disabled {
 
@@ -112,19 +114,8 @@ p {
 }
 
 .backBtn {
-  display: flex;
   justify-content: flex-start;
   margin-bottom: 20px;
-
-  & span {
-    padding: 7px;
-    background-color: $secondary900;
-    color: $primaryTextHighEmphasis;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
 }
 
 .userListElements {

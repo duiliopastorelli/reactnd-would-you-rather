@@ -28,7 +28,7 @@ class QuestionDetails extends Component {
       <Fragment>
         <h1>Would you rather</h1>
 
-        <div className="backBtn">
+        <div className="btn backBtn">
           <span onClick={this.handleBack}>Back</span>
         </div>
 

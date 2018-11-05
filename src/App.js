@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from "react-router";
+import {withRouter, Switch} from "react-router";
 import {Route} from 'react-router-dom';
 import {getInitialUsers, getInitialQuestions} from './actions/shared';
 import UserList from './components/UserList';
@@ -9,6 +9,7 @@ import UserBarInfo from "./components/UserBarInfo";
 import PoolList from "./components/PoolList";
 import QuestionDetails from "./components/QuestionDetails";
 import {setAuthedUser} from "./actions/authedUser";
+import NotFound from "./components/NotFound";
 
 class App extends Component {
 
@@ -21,7 +22,7 @@ class App extends Component {
     this.props.dispatch(setAuthedUser(localStorage.loggedUser));
 
     //Retrieve the questions from the DB
-    this.props.dispatch(getInitialQuestions());
+    this.props.dispatch(getInitialQuestions(this.props.history));
   }
 
   componentDidUpdate(prevProps) {
@@ -55,21 +56,28 @@ class App extends Component {
 
         <div className={"appWrapper"}>
 
-          <Route exact path={"/"} render={() => (
-            <Fragment>
-              <h1>Would you Rather</h1>
-              {!this.props.authedUser && <Welcome/>}
-              {this.props.authedUser && <PoolList/>}
-            </Fragment>
-          )
-          }/>
+          <Switch>
+            <Route exact path={"/"} render={() => (
+              <Fragment>
+                <h1>Would you Rather</h1>
+                {!this.props.authedUser && <Welcome/>}
+                {this.props.authedUser && <PoolList/>}
+              </Fragment>
+            )
+            }/>
 
-          <Route exact path={"/login"} component={UserList}/>
+            <Route exact path={"/login"} component={UserList}/>
 
-          <Route
-            path={"/questions/:questionId"}
-            component={QuestionDetails}
-          />
+            <Route exact path={"/404"} component={NotFound}/>
+
+            <Route
+              path={"/questions/:questionId"}
+              component={QuestionDetails}
+            />
+
+            <Route component={NotFound} />
+          </Switch>
+
         </div>
       </Fragment>
     );
