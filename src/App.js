@@ -41,15 +41,15 @@ class App extends Component {
 
     return (
       <Fragment>
-        <header>
-          {
+        <div className={"barInfo-wrapper"}>
+          <header>
             <UserBarInfo
               userName={userBarInfo.name}
               avatarUrl={userBarInfo.avatarURL}
               authedUser={this.props.authedUser}
             />
-          }
-        </header>
+          </header>
+        </div>
 
         <div className={"appWrapper"}>
 
@@ -69,14 +69,14 @@ class App extends Component {
 
             <Route exact path={"/add"} component={Add}/>
 
-            <Route exact path={"/leaderboard"} component={Leaderboard} />
+            <Route exact path={"/leaderboard"} component={Leaderboard}/>
 
             <Route
               path={"/questions/:questionId"}
               component={QuestionDetails}
             />
 
-            <Route component={NotFound} />
+            <Route component={NotFound}/>
           </Switch>
 
         </div>

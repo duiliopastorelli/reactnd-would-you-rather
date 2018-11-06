@@ -17,9 +17,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  max-width: 700px;
+  margin: auto;
   padding-right: 10px;
-  background-color: $primary;
-  color: $primaryTextHighEmphasis;
 
   & img {
     margin: 0 10px 0 0;
@@ -46,6 +46,8 @@ p {
 }
 
 .appWrapper {
+  max-width: 700px;
+  margin: auto;
   padding: 0 15px 15px;
 }
 
@@ -54,6 +56,11 @@ p {
 }
 
 .barInfo {
+
+  &-wrapper {
+    background-color: $primary;
+    color: $primaryTextHighEmphasis;
+  }
 
   &-element {
     margin-right: 10px;
@@ -67,8 +74,6 @@ p {
     cursor: pointer;
   }
 }
-
-
 
 .userList {
   margin-top: 40px;
