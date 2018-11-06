@@ -5,6 +5,7 @@ import {_saveQuestion} from "../utils/_DATA";
 import serialize from 'form-serialize';
 import {handleNotLoggedUserRedirection} from "../utils/helpers";
 import {addQuestion} from "../actions/questions";
+import {addUserQuestions} from "../actions/users";
 
 class Add extends Component {
 
@@ -48,6 +49,10 @@ class Add extends Component {
         .then(res => {
           //Update the Store and UI
           this.props.dispatch(addQuestion(res));
+          this.props.dispatch(addUserQuestions({
+            author: this.props.authedUser,
+            newQuestion: res.id,
+          }));
           //Redirects to the root
           this.props.history.push("/");
         });
@@ -104,4 +109,10 @@ class Add extends Component {
   }
 }
 
-export default withRouter(connect()(Add));
+function mapStateToProps({authedUser}){
+  return {
+    authedUser,
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Add));
