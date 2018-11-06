@@ -23,6 +23,7 @@ export function filterQuestionsByUser(questions, authedUser) {
   }
 
   answered.sort((a, b) => b.timestamp - a.timestamp);
+  unanswered.sort((a, b) => b.timestamp - a.timestamp);
 
   return {unanswered, answered}
 }
