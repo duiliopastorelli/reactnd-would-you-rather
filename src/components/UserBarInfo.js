@@ -23,7 +23,7 @@ class UserBarInfo extends Component {
 
     return (
       <Fragment>
-        <span className={"barInfo--userName"}>{userName}</span>
+        <span className={"barInfo-element"}>{userName}</span>
         {avatarUrl !== "" &&
         <img
           className={"avatar"}
@@ -35,9 +35,10 @@ class UserBarInfo extends Component {
          show the login link*/}
         {authedUser !== null
           ? <Fragment>
+            <Link className={"barInfo-element"} to={"/leaderboard"}>Leaderboard</Link>
+            <Link className={"barInfo-element"} to={"/add"}>Add Question</Link>
             <span className={"logoutLink"}
                   onClick={this.handleLogout}>Logout</span>
-            <Link to={"/add"}>Add Question</Link>
           </Fragment>
           : <Link to={'/login'}>Login</Link>
         }

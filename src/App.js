@@ -11,6 +11,7 @@ import QuestionDetails from "./components/QuestionDetails";
 import {setAuthedUser} from "./actions/authedUser";
 import NotFound from "./components/NotFound";
 import Add from "./components/Add";
+import Leaderboard from "./components/Leaderboard";
 
 class App extends Component {
 
@@ -24,12 +25,6 @@ class App extends Component {
 
     //Retrieve the questions from the DB
     this.props.dispatch(getInitialQuestions(this.props.history));
-  }
-
-  componentDidUpdate(prevProps) {
-    //For consistency the app assures that the user is always logged in
-    // if (this.props.authedUser !== prevProps.authedUser)
-    //   checkIfUserIsLogged(this.props.authedUser, this.props.history);
   }
 
   render() {
@@ -72,6 +67,9 @@ class App extends Component {
             <Route exact path={"/404"} component={NotFound}/>
 
             <Route exact path={"/add"} component={Add}/>
+
+            <Route exact path={"/leaderboard"} component={Leaderboard} />
+
             <Route
               path={"/questions/:questionId"}
               component={QuestionDetails}

@@ -9,7 +9,7 @@ class NotFound extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Resource not found</h2>
+        <h2>404 - Resource not found</h2>
         <p>Unfortunately the resource you where looking cannot be found.</p>
 
         <div className={"btn"}>

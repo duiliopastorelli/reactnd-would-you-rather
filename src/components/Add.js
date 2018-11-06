@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 import {_saveQuestion} from "../utils/_DATA";
 import serialize from 'form-serialize';
 import {handleNotLoggedUserRedirection} from "../utils/helpers";
@@ -15,6 +16,10 @@ class Add extends Component {
   componentDidMount() {
     //Redirects the user to the login if is not logged in
     handleNotLoggedUserRedirection(this.props);
+  };
+
+  handleBack = () => {
+    this.props.history.push("/");
   };
 
   handleSubmit = (e) => {
@@ -47,9 +52,11 @@ class Add extends Component {
           this.props.history.push("/");
         });
     } else {
+      //Display the error message
       this.setState({
         errorMessage: true,
       });
+      //Remove the error message after 4s
       setTimeout(() => {
         this.setState({
           errorMessage: false,
@@ -62,6 +69,11 @@ class Add extends Component {
     return (
       <div>
         <h1>Would you Rather</h1>
+
+        <div className="btn backBtn">
+          <span onClick={this.handleBack}>Back</span>
+        </div>
+
         <form id={"addForm"}>
           <label htmlFor="optionOne">Option 1:</label>
           <input
@@ -92,4 +104,4 @@ class Add extends Component {
   }
 }
 
-export default connect()(Add);
+export default withRouter(connect()(Add));
