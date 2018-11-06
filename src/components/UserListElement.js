@@ -6,8 +6,9 @@ import PropTypes from 'prop-types'
 import {persistLogin} from "../utils/helpers";
 
 class UserListElement extends Component {
-  handleUserSelection = () => {
 
+  //Handle the login process, based on the user chosen
+  handleUserSelection = () => {
     //Update the state with the selected authedUser
     this.props.dispatch(setAuthedUser(this.props.userId));
 

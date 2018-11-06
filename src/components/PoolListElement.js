@@ -8,6 +8,7 @@ import {saveAnswer} from "../actions/shared";
 class PoolListElement extends Component {
   componentDidMount() {
 
+    //Performs the /questions/ URL check
     this.isUserInQuestionsPath();
 
     //Checks if the current question has already been voted
@@ -24,6 +25,12 @@ class PoolListElement extends Component {
     }));
   }
 
+  /**
+   * Handle the voting functionality updating the UI consequently and
+   * persisting the vote on the DB
+   *
+   * @param answer
+   */
   handleVoting = (answer) => {
     //Checks if the voting button is enabled
     if (!this.state.isVotingDisabled) {
@@ -52,6 +59,8 @@ class PoolListElement extends Component {
     }
   };
 
+  //Checks if the url has the string '/questions/' for define if the UI
+  // should render the question's detail or the question list
   isUserInQuestionsPath = () => {
     return this.props.location.pathname.indexOf('/questions/') !== -1;
   };
@@ -146,18 +155,18 @@ class PoolListElement extends Component {
   }
 }
 
-function mapStateToProps({authedUser, stats}) {
-  return {
-    authedUser,
-    stats,
-  };
-}
-
 PoolListElement.propTypes = {
   id: PropTypes.string.isRequired,
   questions: PropTypes.object.isRequired,
   authorData: PropTypes.object.isRequired,
   votingSection: PropTypes.bool,
 };
+
+function mapStateToProps({authedUser, stats}) {
+  return {
+    authedUser,
+    stats,
+  };
+}
 
 export default withRouter(connect(mapStateToProps)(PoolListElement));

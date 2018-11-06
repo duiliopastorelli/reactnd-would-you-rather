@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
+import PropTypes from 'prop-types';
 import PoolListElement from "./PoolListElement";
 import {handleNotLoggedUserRedirection} from "../utils/helpers";
 
@@ -11,6 +12,7 @@ class QuestionDetails extends Component {
     handleNotLoggedUserRedirection(this.props);
   };
 
+  //Handle the 'back' button functionality
   handleBack = () => {
     this.props.history.push("/");
   };
@@ -20,6 +22,8 @@ class QuestionDetails extends Component {
     const currentQuestion = this.props.questions[questionId];
 
     let authorData;
+    //Checks if the currentQuestion is a thing, because this data is
+    // retrieved asynchronously
     if (currentQuestion)
       authorData = this.props.users[currentQuestion.author];
 
@@ -48,11 +52,17 @@ class QuestionDetails extends Component {
   }
 }
 
-function mapStateToPros({questions, users, authedUser}) {
+QuestionDetails.propTypes = {
+  authedUser: PropTypes.string,
+  users: PropTypes.object.isRequired,
+  questions: PropTypes.object.isRequired,
+};
+
+function mapStateToPros({authedUser, users, questions}) {
   return {
-    questions,
-    users,
     authedUser,
+    users,
+    questions,
   }
 }
 

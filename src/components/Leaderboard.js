@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
+import PropTypes from 'prop-types';
 import {handleNotLoggedUserRedirection} from "../utils/helpers";
 
 class Leaderboard extends Component {
@@ -9,10 +10,18 @@ class Leaderboard extends Component {
     handleNotLoggedUserRedirection(this.props);
   }
 
+  //Handle the "back" button functionality
   handleBack = () => {
     this.props.history.push("/");
   };
 
+  /**
+   * Generates a ranked list of users from the users list
+   * It returns an object with all the data needed for populate the UI
+   *
+   * @param usersId
+   * @returns {*|void}
+   */
   rankedUsers = (usersId) => {
     return usersId.map(userId => {
       return (
@@ -27,6 +36,7 @@ class Leaderboard extends Component {
         }
       )
     })
+      //Sort the data from the higher value to the lower
       .sort((a, b) => {
         return b.total - a.total
       })
@@ -70,6 +80,12 @@ class Leaderboard extends Component {
     )
   }
 }
+
+Leaderboard.propTypes = {
+  users: PropTypes.object.isRequired,
+  authedUser: PropTypes.string,
+  usersKeys: PropTypes.array.isRequired,
+};
 
 function mapStateToProps({users, authedUser}) {
   return {

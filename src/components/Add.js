@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
+import PropTypes from 'prop-types';
 import {_saveQuestion} from "../utils/_DATA";
 import serialize from 'form-serialize';
 import {handleNotLoggedUserRedirection} from "../utils/helpers";
@@ -19,10 +20,16 @@ class Add extends Component {
     handleNotLoggedUserRedirection(this.props);
   };
 
+  //Functionality for the "back" button
   handleBack = () => {
     this.props.history.push("/");
   };
 
+  /**
+   * Handle the form submit functionality
+   *
+   * @param e
+   */
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -108,6 +115,10 @@ class Add extends Component {
     )
   }
 }
+
+Add.propTypes = {
+  authedUser: PropTypes.string,
+};
 
 function mapStateToProps({authedUser}){
   return {

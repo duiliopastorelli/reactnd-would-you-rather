@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {withRouter, Switch} from "react-router";
 import {Route} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {getInitialUsers, getInitialQuestions} from './actions/shared';
 import UserList from './components/UserList';
 import Welcome from './components/Welcome';
@@ -83,6 +84,11 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  users: PropTypes.object.isRequired,
+  authedUser: PropTypes.string
+};
 
 function mapStateToProps({users, authedUser}) {
   return {

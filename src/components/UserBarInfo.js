@@ -8,8 +8,9 @@ import {persistLogin} from "../utils/helpers";
 
 class UserBarInfo extends Component {
 
+  //Handle the logout functionality, updating both the Store and the
+  // localStorage
   handleLogout = () => {
-
     this.props.dispatch(setAuthedUser(null));
 
     //Remove the user token value

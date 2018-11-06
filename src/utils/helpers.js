@@ -113,6 +113,16 @@ export function persistLogin(user) {
     : localStorage.removeItem("loggedUser");
 }
 
+/**
+ * Handle the situation in which the user is trying to access sections of
+ * the app that require authentication
+ *
+ * If the authentication is needed and the user is not logged in, the user
+ * gets redirected to the /login and, after successful login, redirected
+ * back to the requested resource
+ *
+ * @param props
+ */
 export function handleNotLoggedUserRedirection(props) {
   //Redirects the user to the login if is not logged in
   !props.authedUser &&
