@@ -1,19 +1,19 @@
-#Would you rather project
+# Would you rather project
 
 This project is part of the Udacity's React nanodegree course.
 
-#Run the App
-###Install the needed dependencies
+## Run the App
+Install the needed dependencies
 ```
 yarn install
 ```
 
-###Run the App in Development mode
+Run the App in Development mode
 ```
 yarn start
 ```
 
-###Build the Application
+Build the Application
 ```
 yarn run build
 serve -s build
@@ -21,7 +21,7 @@ serve -s build
 
 Note: alternatively to yarn it is possible to use npm.
 
-##Login note:
+## Login note:
 When the user performs a login, the userId is saved in both the Store and the
  localStorage.
  
